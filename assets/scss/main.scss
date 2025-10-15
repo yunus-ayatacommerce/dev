@@ -1,0 +1,38 @@
+
+
+// main.scss
+@import "base/variables";
+@import "base/mixins";
+@import "base/reset";
+@import "layout/grid";
+@import "components/button";
+@import "pages/home";
+
+
+
+// 1. ABSTRACTS/UTILITIES
+// The smallest, most global, and uncompiled-to-CSS tools.
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/placeholders';
+
+// 2. VENDORS
+// Styles from external libraries (normalize, bootstrap, etc.).
+@import 'vendors/normalize';
+// @import 'vendors/some-library';
+
+// 3. BASE
+// Global element styles (resets, body, typography).
+@import 'base/base';
+@import 'base/typography';
+
+// 4. LAYOUT
+// Styles for major site sections (header, footer, grid).
+@import 'layout/header';
+@import 'layout/footer';
+
+// 5. COMPONENTS
+// Styles for reusable, smaller UI modules (buttons, cards, forms).
+@import 'components/card';
+@import 'components/form';
