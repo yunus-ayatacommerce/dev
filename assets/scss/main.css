@@ -31,17 +31,16 @@
 .nav-main ul {
   background-image: linear-gradient(to bottom, #494949, #000000);
   border-radius: 5px;
-  display: block;
   padding: 5px, 5px, 5px, 5px;
 }
 
 .nav-main ul li :hover {
   background: #FFC500;
-  color: #000!important;
+  color: #000;
 }
 
 .navbar .nav-link {
-  color: #ffffff;
+  color: #000;
 }
 
 .tab-row .tab-item {
