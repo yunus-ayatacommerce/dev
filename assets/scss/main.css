@@ -134,7 +134,7 @@
 }
 
 .custom-card-size .card-img-top {
-  height: 120px;
+  height: 250px;
   -o-object-fit: cover;
      object-fit: cover;
   padding: 10px;
@@ -157,6 +157,7 @@
 }
 
 .custom-card-size .card-body {
+  min-height: 150px;
   padding: 1rem;
 }
 
@@ -194,9 +195,37 @@
 }
 
 .custom-card {
+  height: 400px;
   width: 90%;
   max-width: 350px;
   margin-bottom: 20px !important;
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+.bg-primary-verylight {
+  background-color: #FFF0D6;
+}
+
+.bg-primary-light {
+  background-color: #FFC25A;
+}
+
+.bg-primary-new {
+  background-color: #FFA100;
+}
+
+.bg-primary-dark {
+  background-color: #FF8A00;
+}
+
+.light-text {
+  color: #212121;
+}
+
+.voc-wbox {
+  border: 1px solid #FFC500;
+  border-radius: 5px;
+  background-color: #fff;
+  min-height: 175px;
 }/*# sourceMappingURL=main.css.map */
