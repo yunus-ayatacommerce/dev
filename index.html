@@ -41,7 +41,17 @@
 
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0 d-lg-flex">
                         <li class="nav-item px-3"><a class="nav-link" href="#">Home</a></li>
-                        <li class="nav-item px-3"><a class="nav-link" href="#">Products</a></li>
+                        
+                       <li class="nav-item px-3 dropdown"> 
+            <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Products
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                <li><a class="dropdown-item" href="#">Dummy Product 1</a></li>
+                <li><a class="dropdown-item" href="#">Dummy Product 2</a></li>
+                <li><a class="dropdown-item" href="#">Dummy Product 3</a></li>
+            </ul>
+        </li>
                         <li class="nav-item px-3"><a class="nav-link" href="#">Solutions</a></li>
                         <li class="nav-item px-3"><a class="nav-link" href="#">Why InvoTools</a></li>
                         <li class="nav-item px-3"><a class="nav-link" href="#">Insights</a></li>
@@ -70,7 +80,7 @@
                 <img src="./assets/images/banners/herobanner_slider7.webp" class="d-block w-100" alt="First slide">
                 <div class="hero-content slider-data">
                     <h1 class="display-5 fs-2 fs-md-1">Transform receipts into Revenue Engines</h1>
-                    <p class="fs-5 fs-md-4 fs-lg-3">Turn every invoice and receipt into a powerful post-purchase
+                    <p>Turn every invoice and receipt into a powerful post-purchase
                         engagement channel. Drive customer
                         retention, boost loyalty programs, and create new revenue streams with our API-first digital
                         receipt platform.
@@ -86,14 +96,16 @@
                         engage. Every customer gets the experience they crave.</p>
                 </div>
             </div>
-            <div class="carousel-item">
-                <img src="./assets/images/banners/herobanner_slide1.jpeg" class="d-block w-100" alt="Third slide">
-                <div class="hero-content slider-data">
-                    <h1>Most Brands Waste Their Best Customer Moment</h1>
-                    <p>It happens millions of times daily. Customers are locked in, fully engaged, ready for what's
-                        next...then brands literally ghost them.</p>
-                </div>
-            </div>
+           <div class="carousel-item">
+    <img src="./assets/images/banners/herobanner_slide1.jpeg" class="d-block w-100" alt="Third slide">
+    <div class="hero-content slider-data d-flex align-items-center justify-content-center text-center">
+        <div class="content-wrapper"> 
+            <h1 class="display-5 fs-2 fs-md-1">Most Brands Waste Their Best Customer Moment</h1>
+            <p>It happens millions of times daily. Customers are locked in, fully engaged, ready for what's next...then brands literally ghost them.</p>
+        </div>
+    </div>
+</div>
+            
         </div>
 
 
@@ -113,10 +125,10 @@
     <!-- Second Section starts here -->
     <div class="container-fluid py-0 mt-5">
         <h1 class="section-heading">Take control of your digital invoice and digital receipt workflow</h1>
-        <div class="container py-0">
+        <div class="container py-0 mt-4">
             <div class="row gx-4 gy-4 justify-content-center">
                 <div class="col-lg-3 col-md-6 col-12">
-                    <div class="card h-100 shadow-sm border-0 text-center custom-card-size">
+                    <div class="card h-100 border-0 text-center custom-card-size">
                         <img src="./assets/images/cards/Image001.png" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title fs-5 fs-md-4 fs-lg-3">Accelerating order processing</h5>
@@ -126,7 +138,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">
-                    <div class="card h-100 shadow-sm border-0 text-center custom-card-size">
+                    <div class="card h-100 border-0 text-center custom-card-size">
                         <img src="./assets/images/cards/Image002.png" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title fs-5 fs-md-4 fs-lg-3">Print, Download and Share Invoices</h5>
@@ -136,7 +148,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">
-                    <div class="card h-100 shadow-sm border-0 text-center custom-card-size">
+                    <div class="card h-100 border-0 text-center custom-card-size">
                         <img src="./assets/images/cards/Image003.png" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title fs-5 fs-md-4 fs-lg-3">Stay Tax-Ready Globally</h5>
@@ -146,7 +158,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">
-                    <div class="card h-100 shadow-sm border-0 text-center custom-card-size">
+                    <div class="card h-100 border-0 text-center custom-card-size">
                         <img src="./assets/images/cards/Image004.png" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title fs-5 fs-md-4 fs-lg-3">Easily Integrate</h5>
@@ -157,7 +169,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">
-                    <div class="card h-100 shadow-sm border-0 text-center custom-card-size">
+                    <div class="card h-100 border-0 text-center custom-card-size">
                         <img src="./assets/images/cards/Image005.png" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title fs-5 fs-md-4 fs-lg-3">Include promotions and feedback</h5>
@@ -167,7 +179,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">
-                    <div class="card h-100 shadow-sm border-0 text-center custom-card-size">
+                    <div class="card h-100 border-0 text-center custom-card-size">
                         <img src="./assets/images/cards/Image006.png" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title fs-5 fs-md-4 fs-lg-3">Create personalized invoices</h5>
@@ -459,7 +471,7 @@
                             <img src="./assets/images/Logos/Shopify.png">
                         </div>
                         <div class="text-center p-5 text-muted small">
-                           
+
                         </div>
                     </div>
                 </div>
@@ -505,10 +517,90 @@
         </div>
     </div>
 
+<!--Meet our Team section starts here-->
+<section class="team-section py-5">
+    <div class="container">
+
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <div class="custom-key-people-tag mx-auto mb-3 px-3 py-1 d-inline-block">
+                    The Key people behind this
+                </div>
+                
+                <h2 class="display-6 fw-bold">Meet Our Team</h2>
+                <p class="text-secondary col-lg-8 mx-auto">
+                    Get to know the passionate and dedicated individuals driving our mission. This is the group of experts who make all the magic happen.
+                </p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center g-4">
+            
+            <div class="col-12 col-md-4 d-flex align-items-stretch">
+                <div class="text-center custom-member-card">
+                    <div class="custom-img-container">
+                        <img src="./assets/images/cards/shine.png" class="img-fluid custom-clip-image">
+                    </div>
+                    
+                    <div class="custom-title-banner p-2">
+                        <h4 class="h5 mb-0 fw-bold">SHINE MATHEW</h4>
+                    </div>
+                    
+                    <div class="p-3">
+                        <p class="text-uppercase fw-bold small text-secondary">Founder & CEO</p>
+                        <p class="small text-muted mb-0">
+                            With 15 years in e-commerce, retail, and omnichannel, Shine Mathew has helped global brands like Chanel, Dr. Martens, Gucci, and Breitling transform digital operations and customer experiences worldwide.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 col-md-4 d-flex align-items-stretch">
+                <div class="text-center custom-member-card">
+                    <div class="custom-img-container">
+                        <img src="./assets/images/cards/stanley.png" class="img-fluid custom-clip-image">
+                    </div>
+                    
+                    <div class="custom-title-banner p-2">
+                        <h4 class="h5 mb-0 fw-bold">STANLEY P. JOSEPH</h4>
+                    </div>
+                    
+                    <div class="p-3">
+                        <p class="text-uppercase fw-bold small text-secondary">Chief Technology Officer</p>
+                        <p class="small text-muted mb-0">
+                            Stanley drives InvoTools technical architecture with enterprise-scale expertise across retail and energy sectors. He brings deep experience in IT strategy, digital transformation, and platform development from senior technology roles at major energy companies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 d-flex align-items-stretch">
+                <div class="text-center custom-member-card">
+                    <div class="custom-img-container">
+                        <img src="./assets/images/cards/Ijaz.png" class="img-fluid custom-clip-image">
+                    </div>
+                    
+                    <div class="custom-title-banner p-2">
+                        <h4 class="h5 mb-0 fw-bold">IJAZ BHATTEE</h4>
+                    </div>
+                    
+                    <div class="p-3">
+                        <p class="text-uppercase fw-bold small text-secondary">Commercial Director</p>
+                        <p class="small text-muted mb-0">
+                            Ijaz drives InvoTools commercial strategy with over 25 years of customer experience and ecommerce expertise. Previously Sales Director at Amplience for 12+ years, he helped leading retailers orchestrate dynamic content experiences that drove deeper customer engagement.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
+        
 </body>
 
 </html>
