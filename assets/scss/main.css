@@ -339,6 +339,7 @@ h6 {
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 350px;
 }
 
 .custom-key-people-tag {
@@ -362,16 +363,19 @@ h6 {
   justify-content: center;
   align-items: flex-start;
   padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-bottom-left-radius: 40% 10%;
-  border-bottom-right-radius: 40% 10%;
   overflow: hidden;
 }
 
 .custom-clip-image {
   width: 100%;
   border-radius: 0;
+}
+
+.bg-team-card {
+  background-image: linear-gradient(to top, #FFD95C, #FFD95C);
+  background-size: 100% 70%;
+  background-position: bottom;
+  background-repeat: no-repeat;
 }
 
 @media (max-width: 767.98px) {
