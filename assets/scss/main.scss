@@ -215,7 +215,6 @@ h6 {
     justify-content: center;
     color: #000;
     margin-top: 50px;
-    font-style: italic;
     font-weight: 500;
     max-width: 350px;
 
@@ -272,6 +271,10 @@ h6 {
 
 .light-text {
     color: $light-text;
+}
+
+.bg-accent {
+    color: $accent;
 }
 
 .voc-wbox {
@@ -356,17 +359,17 @@ h6 {
 
 
 .custom-member-card {
-   
-    background-color: #fff; 
+
+    background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width:350px;
-   
+    max-width: 350px;
+
 }
 
 
 .custom-key-people-tag {
-    background-color: #ffe08a; 
+    background-color: #ffe08a;
     font-weight: 500;
     border-radius: 3px;
     font-size: 0.9rem;
@@ -375,29 +378,30 @@ h6 {
 
 
 .custom-title-banner {
-    background-color: #ffe08a; 
+    background-color: $accent;
     color: #333;
-    margin-top: -15px; 
+
     position: relative;
     z-index: 10;
+    margin-top: 10px;
 }
 
 
 .custom-img-container {
-    
+
     display: flex;
     justify-content: center;
-    align-items: flex-start; 
+    align-items: flex-start;
     padding-top: 20px;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .custom-clip-image {
     width: 100%;
-    border-radius: 0; 
+    border-radius: 0;
 }
 
-.bg-team-card{
+.bg-team-card {
     background-image: linear-gradient(to top, $accent, $accent);
     background-size: 100% 70%;
     background-position: bottom;
@@ -410,6 +414,64 @@ h6 {
     }
 }
 
+// "Requet call back CSS starts here"
+.yellow-section {
+    background-color: $accent;
+    padding: 40px;
+}
+
+.image-container2 {
+    background-image: url('/Dev/assets/images/Call-back-image.png');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    min-height: 400px;
+}
+
+.cta-button {
+    background-color: #000;
+    color: #FFF;
+    padding: 12px 30px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #333;
+    color: #FFF;
+}
+
+.text-content {
+    padding: 50px 0;
+}
+
+.text-content {
+    font-size: 2.25rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.text-content p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+
+@media (min-width: 992px) {
+    .row-cta>div {
+
+        display: flex;
+    }
+}
+
+
+
+
 
 
 @media (max-width: 767.99px) {
@@ -418,6 +480,7 @@ h6 {
         height: 400px;
         object-fit: cover;
     }
+
     .hero-content {
         top: 50%;
         transform: translateY(-50%);
