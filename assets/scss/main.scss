@@ -418,14 +418,15 @@ h6 {
 .yellow-section {
     background-color: $accent;
     padding: 40px;
+    height: 350px;
 }
 
 .image-container2 {
     background-image: url('/Dev/assets/images/Call-back-image.png');
     background-size: cover;
     background-position: center;
-    height: 100%;
-    min-height: 400px;
+    max-height: 350px;
+
 }
 
 .cta-button {
@@ -462,16 +463,26 @@ h6 {
 }
 
 
-@media (min-width: 992px) {
-    .row-cta>div {
 
-        display: flex;
-    }
+
+//request for call back css portion starts here
+.fixed-height-row {
+    height: auto;
+    overflow: hidden;
 }
 
+.call-back-img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
 
-
-
+@media (min-width: 768px) {
+    .fixed-height-row {
+        height: 350px !important;
+        overflow: hidden;
+    }
+}
 
 
 @media (max-width: 767.99px) {
