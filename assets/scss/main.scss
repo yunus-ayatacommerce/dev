@@ -138,7 +138,7 @@ h6 {
     background-color: #000;
     top: 50%;
     left: 10%;
-    position: absolute;
+    position: absolute!important;
     text-align: center;
     width: 30%;
     z-index: 1000;
@@ -168,7 +168,7 @@ h6 {
 }
 
 .custom-card-size {
-    max-width: 280px;
+    max-width: 559px;
     min-height: 250px;
     border-radius: 10px;
     overflow: hidden;
@@ -491,7 +491,7 @@ h6 {
 @media (max-width: 767.99px) {
     .carousel-inner .carousel-item img {
 
-        height: 400px;
+        max-height: 400px;
         object-fit: cover;
     }
 
