@@ -62,8 +62,28 @@ h6 {
     z-index: 1050;
 }
 
-.carousel-inner-hf{
-    max-height:700px;
+.carousel-inner-hf {
+    max-height: 700px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-inner-hf .carousel-item {
+    height: 100%;
+}
+
+.carousel-inner-hf .carousel-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+
+    .slider-wrapper {
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
 }
 
 .nav-main ul {
@@ -138,7 +158,7 @@ h6 {
     background-color: #000;
     top: 50%;
     left: 10%;
-    position: absolute!important;
+    position: absolute;
     text-align: center;
     width: 30%;
     z-index: 1000;
@@ -165,6 +185,61 @@ h6 {
 .gen-space {
     height: 30px;
 
+}
+
+
+.mobile-scroll-container {
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+.mobile-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.mobile-scroll-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+@media (max-width: 991.98px) {
+    .row.flex-nowrap {
+
+        padding-bottom: 1rem;
+    }
+
+
+    .row>[class*="col-"] {
+
+        flex-shrink: 0;
+    }
+
+
+    .row>[class*="col-"]:first-child {
+        padding-left: calc(var(--bs-gutter-x) * .5);
+    }
+
+
+    .row>[class*="col-"]:last-child {
+        padding-right: calc(var(--bs-gutter-x) * .5);
+    }
+}
+
+
+@media (min-width: 992px) {
+    .mobile-scroll-container {
+        overflow-x: visible;
+        padding-left: var(--bs-gutter-x, 1.5rem);
+        padding-right: var(--bs-gutter-x, 1.5rem);
+    }
+
+    .row>[class*="col-"] {
+        flex-shrink: 1;
+    }
 }
 
 .custom-card-size {
@@ -329,7 +404,7 @@ h6 {
 
     background-color: #f8f9fa;
     padding: 1.5rem 1rem;
-    height:350px;
+    height: 350px;
 }
 
 .logobox2 {
@@ -415,6 +490,10 @@ h6 {
     .custom-member-card {
         margin: 0 auto;
     }
+
+    .carousel-inner-hf {
+        height: 600px !important;
+    }
 }
 
 // "Requet call back CSS starts here"
@@ -474,7 +553,7 @@ h6 {
     overflow: hidden;
 }
 
-.call-back-img{
+.call-back-img {
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -512,4 +591,23 @@ h6 {
         margin-left: auto;
         margin-right: auto;
     }
+}
+
+
+#transactionCarousel .carousel-control-prev,
+#transactionCarousel .carousel-control-next {
+
+    
+    
+    width: 40px;
+    height: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#transactionCarousel .carousel-control-prev-icon,
+#transactionCarousel .carousel-control-next-icon {
+
+    filter: invert(100%) grayscale(100%) brightness(0) !important;
+
 }
