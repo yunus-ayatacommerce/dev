@@ -150,7 +150,7 @@ h6 {
 .slider-data {
   display: block;
   background-color: #000;
-  top: 50%;
+  top: 40%;
   left: 10%;
   position: absolute;
   text-align: center;
@@ -499,6 +499,57 @@ h6 {
   margin-bottom: 30px;
 }
 
+.bg-light-yellow {
+  background-color: var(--bs-light-yellow);
+}
+
+.nav-pills .custom-nav-link {
+  color: #000;
+  border-bottom: 3px solid transparent;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 5px 5px 0px 0px;
+  transition: border-bottom-color 0.3s ease, color 0.3s ease;
+  font-weight: 700;
+}
+
+.nav-pills .custom-nav-link.active,
+.nav-pills .custom-nav-link:hover {
+  background-color: #000;
+  color: #fff;
+  border-bottom-color: var(--bs-warning);
+}
+
+.card-left {
+  background-color: #FFEEB5;
+  color: #000;
+  border: 1px solid #FFD95C;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.card-right {
+  background-color: #FFD95C;
+  color: #000;
+  border: 3px solid solid;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.stat-box {
+  background-color: #FFD95C;
+  color: #000;
+  padding: 8px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.icon-image-container {
+  width: 100%;
+  height: 150px;
+  margin-bottom: 1rem;
+}
+
 .fixed-height-row {
   height: auto;
   overflow: hidden;
@@ -519,7 +570,7 @@ h6 {
 }
 @media (max-width: 767.99px) {
   .carousel-inner .carousel-item img {
-    max-height: 400px;
+    max-height: 80vh !important;
     -o-object-fit: cover;
        object-fit: cover;
   }
@@ -538,6 +589,7 @@ h6 {
     transform: none;
     margin-left: auto;
     margin-right: auto;
+    min-height: 50vh;
   }
 }
 #transactionCarousel .carousel-control-prev,
