@@ -557,11 +557,11 @@ h6 {
 
 
 .nav-pills .custom-nav-link {
-    color: #000; 
+    color: #000;
     border-bottom: 3px solid transparent;
     padding: 10px 15px;
     margin: 0 5px;
-    border-radius: 5px 5px 0px 0px; 
+    border-radius: 5px 5px 0px 0px;
     transition: border-bottom-color 0.3s ease, color 0.3s ease;
     font-weight: 700;
 }
@@ -569,17 +569,17 @@ h6 {
 
 .nav-pills .custom-nav-link.active,
 .nav-pills .custom-nav-link:hover {
-    background-color: #000; 
-    color: #fff; 
-    border-bottom-color: var(--bs-warning); 
+    background-color: #000;
+    color: #fff;
+
 }
 
 
 
 
 .card-left {
-    background-color:#FFEEB5; 
-    color:#000; 
+    background-color: #FFEEB5;
+    color: #000;
     border: 1px solid #FFD95C;
     border-radius: 0px 10px 10px 0px;
 }
@@ -597,16 +597,17 @@ h6 {
 .stat-box {
     background-color: #FFD95C;
     color: #000;
-    padding: 8px 10px;
+    padding: 8px 5px;
     border-radius: 5px;
-    font-weight: bold;
     text-align: center;
-    line-height: 1.2; 
+    line-height: 1.2;
+    min-height:100px!important;
+    
 }
 
 .icon-image-container {
-    width: 100%; 
-    height: 150px; 
+    width: 100%;
+    height: 150px;
     margin-bottom: 1rem;
 
 }
@@ -622,6 +623,223 @@ h6 {
     height: 100%;
 }
 
+//task-251 section css starts here
+
+.col.card-container {
+    padding-bottom: 0;
+
+}
+
+.card-container {
+
+    aspect-ratio: 1 / 1;
+}
+
+/* --- FLIP CARD CORE STYLES --- */
+.flip-card {
+    background-color: transparent;
+    width: 90%;
+    height: 90%;
+
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+
+.flip-card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 0.5rem;
+    overflow: hidden;
+
+}
+
+/* --- FACE CONTENT STYLES --- */
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the image covers the entire front face */
+}
+
+/* Position the back face */
+.flip-card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.bg-card {
+    background-color: #FFD95C !important;
+}
+
+
+.flip-card-front .btn {
+    border: 2px solid white;
+}
+
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 1.5rem;
+}
+
+.row>.col {
+
+    width: 33.3333% !important;
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
+//task-251 section css ends here
+
+//Task-251-Module 2 CSS starts here
+
+/* Custom CSS to precisely match the screenshot design */
+
+/* Overall Section Card Styling */
+.commerce-section-card {}
+
+/* Top Badge Styling */
+.custom-badge-top {
+    background-color: #ffebbc;
+    /* Specific yellow for the badge */
+    color: #5a4b27;
+    /* Darker text for contrast */
+    font-weight: 500;
+    font-size: 0.9em;
+}
+
+/* Left Navigation Pane Styling */
+.commerce-nav-pane {
+    background-color: #FFECAC;
+    padding: 0;
+    /* Remove default Bootstrap padding */
+}
+
+/* Custom Nav Link Styling (for both active and inactive) */
+.commerce-nav-pane .custom-nav-link {
+    color: #333;
+    /* Default text color for all links */
+    background-color: transparent;
+    /* Ensures background is from parent pane */
+    border-bottom: 1px solid #ffe8cc;
+    /* Thin separator line */
+    transition: background-color 0.2s ease-in-out;
+    /* Smooth transition for hover */
+    display: flex;
+    /* Use flexbox for alignment of text and icon */
+    align-items: center;
+    /* Vertically center content */
+    justify-content: space-between;
+    /* Pushes icon to the right */
+    padding-right: 1.5rem;
+    /* Space for the icon */
+}
+
+.commerce-nav-pane .custom-nav-link:last-of-type {
+    border-bottom: none;
+    /* No border for the last link */
+}
+
+/* Active Nav Link Styling */
+.commerce-nav-pane .custom-nav-link.active {
+    background-color: #FFD95C !important;
+    /* Slightly darker yellow for the active link */
+    font-weight: 600;
+    /* Bolder text for active state */
+    color: #212529;
+    /* Darker text for active state */
+
+
+}
+
+/* Hover effect for inactive nav links */
+.commerce-nav-pane .custom-nav-link:not(.active):hover {
+    background-color: #000;
+    /* Light yellow on hover */
+    color: #FFD95C;
+    /* Darker text on hover */
+}
+
+/* Right Content Pane Styling */
+.commerce-content-pane {
+    border: 5px solid #FFD95C;
+    background-color: #ffffff;
+    /* White background for the content area */
+    padding: 2.5rem;
+    /* Generous padding inside the content pane */
+}
+
+/* Specific styling for the image placeholder if Bootstrap's img-fluid isn't enough */
+.image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    /* Light gray background for placeholders */
+    border: 1px dashed #ced4da;
+    /* Dashed border for visual cue */
+    color: #6c757d;
+    /* Muted text color */
+    height: 100%;
+    /* Occupy available height */
+    width: 100%;
+    /* Occupy available width */
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.image-placeholder img {
+    object-fit: contain;
+    /* Ensures the image fits within the placeholder */
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* For the image in the marketplace section specifically, to match its dimensions */
+.image-placeholder.ratio-16x9 {
+    min-height: 350px;
+    /* Adjust as needed for the specific image height */
+    background-color: transparent;
+    /* No background for the actual image, only for the placeholder */
+    border: none;
+    /* No dashed border for the actual image */
+}
+
+
+/* Adjust Bootstrap's default hr for better visual separation */
+hr {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+//Task-251- Module 2 CSS ends here
+
+
 @media (min-width: 768px) {
     .fixed-height-row {
         height: 350px !important;
@@ -633,7 +851,7 @@ h6 {
 @media (max-width: 767.99px) {
     .carousel-inner .carousel-item img {
 
-        max-height: 80vh!important;
+        max-height: 80vh !important;
         object-fit: cover;
     }
 
@@ -653,16 +871,19 @@ h6 {
         transform: none;
         margin-left: auto;
         margin-right: auto;
-        min-height:50vh;
+        min-height: 50vh;
     }
+
+
 }
+
 
 
 #transactionCarousel .carousel-control-prev,
 #transactionCarousel .carousel-control-next {
 
-    
-    
+
+
     width: 40px;
     height: 60px;
     top: 50%;
