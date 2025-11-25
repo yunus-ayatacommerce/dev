@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Feature Comparison Layout (BS5 - Minimized JS)</title>
+    <!-- Load Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <style>
+        /* Custom Colors & Structure Variables */
+        :root {
+            --header-red: #CC3333;
+            --header-green: #339966;
+            --bg-red-light: #FFEBEB; 
+            --bg-green-light: #EBF7EB;
+            --icon-red: #E83939;
+            --icon-green: #289658;
+            --dark-bg: #1f2937;
+            --light-bg: #f3f4f6;
+            --max-width-7xl: 1280px;
+            --default-border-color: #d1d5db; /* Gray 300 equivalent */
+        }
+
+        /* Applying custom global background and max width */
+        body { background-color: var(--light-bg); }
+        .max-width-7xl { max-width: var(--max-width-7xl); }
+        .bg-dark-bg { background-color: var(--dark-bg) !important; }
+        .text-header-red { color: var(--header-red); }
+        .text-header-green { color: var(--header-green); }
+        .bg-bg-red-light { background-color: var(--bg-red-light) !important; }
+        .bg-bg-green-light { background-color: var(--bg-green-light) !important; }
+        .icon-small-red { color: var(--icon-red); }
+        .icon-small-green { color: var(--icon-green); }
+
+        /* --- Row Item Styling (CSS handles all hover effects) --- */
+        .row-item {
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            border-radius: 0.5rem; 
+            border-color: var(--default-border-color);
+            border-width: 2px !important;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* BS shadow-sm equivalent */
+        }
+
+        /* Hover Effect: Border Color and Shadow (Pure CSS) */
+        .row-item:hover {
+            border-color: var(--hover-color) !important;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; /* BS shadow-lg equivalent */
+        }
+
+        /* Active State (Managed by JS, but styled by CSS) */
+        .row-item.active {
+            border-width: 3px !important;
+            border-color: var(--active-color) !important;
+            z-index: 10;
+            position: relative;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; /* BS shadow-lg equivalent */
+        }
+
+        /* Overrides hover style if the row is already active */
+        .row-item.active:hover {
+            border-width: 3px !important;
+        }
+        
+        /* Inner Container for the two columns */
+        .row-inner-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; 
+            border-radius: 0.5rem;
+        }
+
+        /* Arrow Divider Logic */
+        .traditional-content {
+            clip-path: polygon(0 0, calc(100% - 1px) 0, 100% 50%, calc(100% - 1px) 100%, 0 100%);
+            margin-right: -1px; 
+            z-index: 1; 
+            position: relative;
+        }
+        
+        .smart-content {
+            z-index: 0;
+        }
+
+        /* --- Header Arrow Styling (Replicating row style) --- */
+        .header-inner-container {
+            display: flex;
+            width: 100%;
+            border: 1px solid var(--default-border-color);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .header-traditional-content {
+            flex: 1;
+            padding: 0.75rem; 
+            clip-path: polygon(0 0, calc(100% - 1px) 0, 100% 50%, calc(100% - 1px) 100%, 0 100%);
+            margin-right: -1px; 
+            z-index: 1; 
+            position: relative;
+        }
+
+        .header-smart-content {
+            flex: 1;
+            padding: 0.75rem; 
+            z-index: 0;
+            position: relative;
+        }
+        
+        /* Image container specific style */
+        @media (min-width: 992px) {
+            .sticky-lg-top {
+                position: sticky;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light min-vh-100 p-4 p-sm-5">
+    <!-- max-w-7xl is achieved via a custom class -->
+    <div id="app" class="max-width-7xl mx-auto bg-white shadow-lg rounded-3 overflow-hidden">
+        
+        <!-- Main Two-Column Grid (row g-0 removes gutter) -->
+        <div class="row g-0">
+            
+            <!-- Left Column: Comparison Rows -->
+            <div id="comparison-list" class="col-lg-6 p-4 p-sm-5 d-flex flex-column gap-3">
+                
+                <!-- Header Section -->
+                <div class="header-wrapper">
+                    <div class="header-inner-container">
+                        <div class="header-traditional-content bg-white text-header-red fw-bold text-center">Traditional Way</div>
+                        <div class="header-smart-content bg-white text-header-green fw-bold text-center">Smart Solution</div>
+                    </div>
+                </div>
+
+                <!-- Feature Rows (Hardcoded HTML - Minimal JS required) -->
+                
+                <!-- Row 1: Automation (Green) -->
+                <div 
+                    class="row-item border border-2 rounded-3 shadow-sm"
+                    data-id="1"
+                    data-color="#339966"
+                    data-img-url="https://placehold.co/800x600/339966/ffffff?text=Feature+1%0A(Automation)"
+                    style="--hover-color: #339966;"
+                >
+                    <div class="row-inner-container">
+                        <div class="traditional-content p-4 flex-grow-1 d-flex flex-column justify-content-center bg-bg-red-light">
+                            <div class="d-flex align-items-center icon-small-red mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                <span class="fw-bold">Manual Data Entry</span>
+                            </div>
+                            <p class="text-muted mb-0">Prone to errors and inefficiencies</p>
+                        </div>
+                        <div class="smart-content p-4 flex-grow-1 d-flex flex-column justify-content-center bg-bg-green-light">
+                            <div class="d-flex align-items-center icon-small-green mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M9 11l3 3L22 4"/></svg>
+                                <span class="fw-bold">Auto-captures transaction details</span>
+                            </div>
+                            <p class="text-muted mb-0">Reducing errors and saving time</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Customization (Red) -->
+                <div 
+                    class="row-item border border-2 rounded-3 shadow-sm"
+                    data-id="2"
+                    data-color="#CC3333"
+                    data-img-url="https://placehold.co/800x600/CC3333/ffffff?text=Feature+2%0A(Customization)"
+                    style="--hover-color: #CC3333;"
+                >
+                    <div class="row-inner-container">
+                        <div class="traditional-content p-4 flex-grow-1 d-flex flex-column justify-content-center bg-bg-red-light">
+                            <div class="d-flex align-items-center icon-small-red mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                <span class="fw-bold">Limited customization</span>
+                            </div>
+                            <p class="text-muted mb-0">lack personal touch.</p>
+                        </div>
+                        <div class="smart-content p-4 flex-grow-1 d-flex flex-column justify-content-center bg-bg-green-light">
+                            <div class="d-flex align-items-center icon-small-green mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M9 11l3 3L22 4"/></svg>
+                                <span class="fw-bold">Customize invoices</span>
+                            </div>
+                            <p class="text-muted mb-0">to reflect your brand values.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Row 3: Payments (Blue) -->
+                <div 
+                    class="row-item border border-2 rounded-3 shadow-sm"
+                    data-id="3"
+                    data-color="#2563eb"
+                    data-img-url="https://placehold.co/800x600/2563eb/ffffff?text=Feature+3%0A(Payments)"
+                    style="--hover-color: #2563eb;"
+                >
+                    <div class="row-inner-container">
+                        <div class="traditional-content p-4 flex-grow-1 d-flex flex-column justify-content-center bg-bg-red-light">
+                            <div class="d-flex align-items-center icon-small-red mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                <span class="fw-bold">Outdated Payment Methods</span>
+                            </div>
+                            <p class="text-muted mb-0">Relies only on checks or slow bank transfers.</p>
+                        </div>
+                        <div class="smart-content p-4 flex-grow-1 d-flex flex-column justify-content-center bg-bg-green-light">
+                            <div class="d-flex align-items-center icon-small-green mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M9 11l3 3L22 4"/></svg>
+                                <span class="fw-bold">Multi-Channel Payments</span>
+                            </div>
+                            <p class="text-muted mb-0">Accept credit cards, mobile wallets, and instant transfers.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Row 4: Tracking (Amber) -->
+                <div 
+                    class="row-item border border-2 rounded-3 shadow-sm"
+                    data-id="4"
+                    data-color="#f59e0b"
+                    data-img-url="https://placehold.co/800x600/f59e0b/ffffff?text=Feature+4%0A(Tracking)"
+                    style="--hover-color: #f59e0b;"
+                >
+                    <div class="row-inner-container">
+                        <div class="traditional-content p-4 flex-grow-1 d-flex flex-column justify-content-center bg-bg-red-light">
+                            <div class="d-flex align-items-center icon-small-red mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                <span class="fw-bold">No Real-Time Tracking</span>
+                            </div>
+                            <p class="text-muted mb-0">You don't know when clients open documents.</p>
+                        </div>
+                        <div class="smart-content p-4 flex-grow-1 d-flex flex-column justify-content-center bg-bg-green-light">
+                            <div class="d-flex align-items-center icon-small-green mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M9 11l3 3L22 4"/></svg>
+                                <span class="fw-bold">Real-Time Audit Trail</span>
+                            </div>
+                            <p class="text-muted mb-0">Get instant notifications when documents are opened.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Row 5: Reporting (Rose) -->
+                <div 
+                    class="row-item border border-2 rounded-3 shadow-sm"
+                    data-id="5"
+                    data-color="#be123c"
+                    data-img-url="https://placehold.co/800x600/be123c/ffffff?text=Feature+5%0A(Reporting)"
+                    style="--hover-color: #be123c;"
+                >
+                    <div class="row-inner-container">
+                        <div class="traditional-content p-4 flex-grow-1 d-flex flex-column justify-content-center bg-bg-red-light">
+                            <div class="d-flex align-items-center icon-small-red mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                <span class="fw-bold">Difficult Reporting</span>
+                            </div>
+                            <p class="text-muted mb-0">Manual calculation of metrics.</p>
+                        </div>
+                        <div class="smart-content p-4 flex-grow-1 d-flex flex-column justify-content-center bg-bg-green-light">
+                            <div class="d-flex align-items-center icon-small-green mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M9 11l3 3L22 4"/></svg>
+                                <span class="fw-bold">One-Click Analytics</span>
+                            </div>
+                            <p class="text-muted mb-0">Generate comprehensive financial reports instantly.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Dynamic Image Display -->
+            <div id="image-container" class="col-lg-6 sticky-lg-top" style="height: 400px; min-height: 100vh;">
+                <div class="h-100 bg-dark-bg p-4 p-sm-5 d-flex align-items-center justify-content-center">
+                    <div id="image-display" class="w-100 h-100 rounded-3 overflow-hidden shadow-lg transition-opacity">
+                        <!-- Placeholder content for the initial state -->
+                        <div id="initial-message" class="d-flex flex-column align-items-center justify-content-center h-100 text-white-50 text-center p-4">
+                            <svg style="width: 3rem; height: 3rem; margin-bottom: 0.75rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-3v4m0 0h-4m4 0l-5-5m-3 12v4m0 0H8m0 0l5-5m11 3h-4m4 0v4m0 0l-5-5"></path></svg>
+                            <p class="fs-4 fw-semibold">Hover or Click a Feature on the Left</p>
+                            <p class="fs-6 mt-1">See a visual demonstration of the benefit here.</p>
+                        </div>
+                        <!-- The dynamic image element -->
+                        <img id="dynamic-image" src="" alt="Feature Visualization" class="w-100 h-100 object-fit-cover d-none" onerror="this.onerror=null;this.src='https://placehold.co/800x600/374151/ffffff?text=Image+Not+Found'">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Load Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        // Minimal JavaScript to handle the cross-column persistent state (Click)
+        const rowItems = document.querySelectorAll('.row-item');
+        const dynamicImage = document.getElementById('dynamic-image');
+        const initialMessage = document.getElementById('initial-message');
+        let activeRowId = null; 
+
+        // Function to update the row styles and the image display
+        function updateState(id) {
+            rowItems.forEach(row => {
+                const rowId = row.getAttribute('data-id');
+                const rowColor = row.getAttribute('data-color');
+                
+                if (rowId == id) {
+                    // Set active state for the clicked row
+                    row.classList.toggle('active');
+                    
+                    // Update activeRowId and the image based on the toggle result
+                    if (row.classList.contains('active')) {
+                        activeRowId = rowId;
+                        row.style.setProperty('--active-color', rowColor);
+                        
+                        initialMessage.classList.add('d-none');
+                        dynamicImage.classList.remove('d-none');
+                        dynamicImage.src = row.getAttribute('data-img-url');
+                    } else {
+                        // Deactivate state
+                        activeRowId = null;
+                        row.style.setProperty('--active-color', 'var(--default-border-color)'); // Reset hover color
+                        
+                        initialMessage.classList.remove('d-none');
+                        dynamicImage.classList.add('d-none');
+                    }
+                } else {
+                    // Ensure all other rows are inactive
+                    row.classList.remove('active');
+                    row.style.setProperty('--active-color', 'var(--default-border-color)');
+                }
+            });
+        }
+        
+        // Function to handle click events
+        rowItems.forEach(row => {
+            row.addEventListener('click', () => {
+                const id = row.getAttribute('data-id');
+                // The current ID being clicked might be the one that is already active
+                // To toggle: we pass the ID and let updateState handle the logic.
+                updateState(id);
+            });
+        });
+
+        // Initialization (runs once on load)
+        window.onload = () => {
+            initialMessage.classList.remove('d-none');
+            dynamicImage.classList.add('d-none');
+        };
+
+    </script>
+</body>
+</html>

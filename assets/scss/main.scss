@@ -848,6 +848,260 @@ hr {
 
 //Task-251- Module 2 CSS ends here
 
+//task-253 css starts here
+.section-bg{
+    background: #fff0d6;
+}
+
+.traditional-header {
+    background-color: #FFFCF9; 
+    color: #DA2424;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    font-style: italic;
+    align-content: center;
+    max-width: 50%;
+}
+
+.smart-header {
+    background-color: #f0f0f0; 
+    color: #396800;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    font-style: italic;
+    align-content: center;
+    max-width: 50%;
+    
+}
+
+
+.comparison-row {
+    max-width: 100%;
+}
+
+.traditional-entry {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-right: none;
+    flex-basis: 50%; 
+    max-width: 50%; 
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05); 
+    transition: transform 0.2s ease-in-out;
+}
+
+.smart-entry {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-left: none;
+    flex-grow: 1;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.traditional-icon {
+    color: #e65252; 
+    font-size: 1.5rem;
+}
+
+.traditional-text {
+    color: #a0a0a0;
+    font-size: 0.85rem;
+}
+
+.smart-icon {
+    color: #66bb6a; 
+    font-size: 1.5rem;
+}
+
+.smart-text {
+    color: #396800;
+    font-size: 0.85rem;
+}
+
+
+.traditional-red-bg {
+    background-color: #f8e1e1; 
+    border-color: #e65252;
+}
+
+
+.arrow-container {
+    padding: 0 10px; 
+    line-height: 1; 
+}
+
+.arrow-icon {
+    font-size: 1.5rem;
+    color: #ccc;
+}
+
+
+.sidebar-mockup-container {
+   
+    width: 350px;
+    height: 550px;
+    background-color: #000; 
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); 
+}
+
+.placeholder-image-overlay {
+    background-color: rgba(0, 0, 0, 0.5); 
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+    /* On medium and small screens, stack the comparison rows */
+    .comparison-row {
+        flex-direction: column;
+    }
+
+    .traditional-entry,
+    .smart-entry {
+        border-radius: 0.25rem !important;
+        max-width: 100%;
+        width: 100%;
+        border-right: 1px solid #e0e0e0; /* Restore border for stacking */
+        border-left: 1px solid #e0e0e0;
+    }
+
+    .traditional-entry {
+        margin-bottom: 0.5rem;
+    }
+
+    .arrow-container {
+        display: none; /* Hide arrow separator */
+    }
+
+    .d-flex.w-100.mb-4.fw-bold {
+        display: none !important; /* Hide 'Traditional Way' and 'Smart Invoicing' headers */
+    }
+
+    /* Adjust sidebar mockup for smaller screens */
+    .sidebar-mockup-container {
+        width: 100%;
+        max-width: 350px;
+        height: 400px;
+    }
+}
+
+.comparison-container {
+    display: flex;
+    width: 100%;
+    /* Use the light colors from the image */
+    background: #fcebeb; /* Base background color */
+    border-radius: 8px; 
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comparison-section {
+    padding: 20px 25px;
+    position: relative;
+    /* Flex-grow to manage width; traditional side is slightly smaller in the image */
+    flex: 1; 
+    min-height: 100px; /* Ensure content is visible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+}
+
+/* --- TRADITIONAL (RED/PINK) SECTION STYLING --- */
+.traditional {
+    background-color: #fcebeb; /* Light pink background */
+    color: #4b4b4b; /* Dark text color */
+    flex-grow: 1; 
+}
+
+/* --- SMART (GREEN) SECTION STYLING --- */
+.smart {
+    /* Set the green background that covers the rest of the space */
+    background-color: #e9fbe9; 
+    color: #1f6431; /* Dark green text color for the smart side */
+    flex-grow: 1.5; /* Make the green side slightly wider */
+}
+
+/* *** CSS ARROW EFFECT *** */
+/* Create the arrow by moving the Smart section content over the Traditional background */
+.smart {
+    padding-left: 45px; /* Add space for the arrow tip */
+}
+
+.smart::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    /* Create a parallelogram/chevron shape using skew transform */
+    transform: skewX(-15deg) translateX(-20px); 
+    width: 60px; /* Width of the overlap/skewed area */
+    background-color: #e9fbe9; /* Match smart background color */
+    /* Ensure the skew doesn't affect the text inside .smart */
+    z-index: 1; 
+    border-right: 1px solid #c9d2c9; /* Optional: adds a slight divider line */
+}
+
+/* Ensure the content of the Smart section sits above the skewed background */
+.smart > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* --- TEXT AND ICON STYLING (Adjusted for better fit) --- */
+.entry-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px; /* Spacing between comparison points */
+}
+
+.entry-title {
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+
+.entry-text {
+    font-size: 0.9em;
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+
+.icon-danger, .icon-success {
+    font-size: 1.5em;
+    margin-right: 12px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.icon-danger { color: #dc3545; } /* Red for error */
+.icon-success { color: #28a745; } /* Green for success */
+
+/* Adjusting the layout for the text from the image for the traditional side */
+.traditional .entry-item {
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.traditional .entry-title {
+    color: #4b4b4b; /* Default text color */
+}
+
+.smart .entry-title {
+    color: #1f6431; /* Green text color */
+}
+
+.traditional .icon-danger {
+    margin-bottom: 5px;
+}
+
+
+
+//task-253 css ends here
+
 
 @media (min-width: 768px) {
     .fixed-height-row {
