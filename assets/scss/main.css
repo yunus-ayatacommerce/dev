@@ -499,8 +499,25 @@ h6 {
   margin-bottom: 30px;
 }
 
+.nav {
+  /* Hide scrollbar for Webkit browsers (Chrome, Safari, Opera) */
+  /* Hide scrollbar for IE and Edge */
+  -ms-overflow-style: none;
+  /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
+}
+.nav::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 .bg-light-yellow {
   background-color: var(--bs-light-yellow);
+}
+
+.col-4-ded {
+  width: 30% !important;
 }
 
 .nav-pills .custom-nav-link {
@@ -541,6 +558,8 @@ h6 {
   text-align: center;
   line-height: 1.2;
   min-height: 100px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
 }
 
 .icon-image-container {
@@ -572,8 +591,8 @@ h6 {
 /* --- FLIP CARD CORE STYLES --- */
 .flip-card {
   background-color: transparent;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   perspective: 1000px;
 }
 
@@ -711,7 +730,7 @@ h6 {
   border: 5px solid #FFD95C;
   background-color: #ffffff;
   /* White background for the content area */
-  padding: 2.5rem;
+  padding: 1rem;
   /* Generous padding inside the content pane */
 }
 
@@ -1023,22 +1042,155 @@ hr {
   margin-bottom: 5px;
 }
 
+/* Ensures custom images fit properly */
 .card-img-custom {
   max-height: 200px;
   width: auto;
 }
 
+/* Base style for the card content container, ensures padding */
 .card-container254 {
-  max-width: 300px !important;
   padding: 10px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.carousel-indicators [data-bs-target] {
-  background-color: #d7d7d7;
+/* Ensure all images inside the card (top image, bottom bar) scale down properly */
+.card-grid .card img {
+  max-width: 85%;
+  height: auto;
 }
 
+.card-grid {
+  display: flex;
+  overflow-x: scroll;
+  /* Hide scrollbar across browsers */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  /* Padding/Margin for mobile look */
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-left: -5%;
+  margin-right: -5%;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.card-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.card-grid .card {
+  min-width: 85vw;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  height: 100%;
+  overflow: hidden;
+  max-width: 300px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media (max-width: 576px) {
+  .card-grid {
+    padding-left: 3%;
+    padding-right: 3%;
+    margin-left: -3%;
+    margin-right: -3%;
+    gap: 1rem;
+  }
+  .card-grid .card {
+    min-width: 90vw;
+  }
+}
+@media (min-width: 768px) {
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns for tablet */
+    gap: 1.5rem;
+    overflow-x: visible;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .card-grid .card {
+    min-width: auto;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* --- 4. Large Desktop Layout (Grid, 992px and up) --- */
+@media (min-width: 992px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 columns for desktop */
+  }
+}
+.bg-yellow {
+  background: #F6D54F;
+}
+
+.bg-orange {
+  background: #F7A928;
+}
+
+.text-orange {
+  color: #F7A928;
+}
+
+.accordion-tab {
+  border: 0;
+  border-radius: 12px;
+  padding: 20px 16px;
+  width: 55px;
+  height: 180px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  color: #000;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.right-tab {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  height: 220px;
+}
+
+.accordion-tab span {
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.image-card {
+  width: 300px;
+  height: 300px;
+  transition: opacity 0.3s ease;
+}
+
+.fade-area {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.fade-hide {
+  opacity: 0;
+}
+
+/* MOBILE OVERRIDE */
+@media (max-width: 768px) {
+  .image-card {
+    width: 100%;
+    height: auto;
+  }
+}
 @media (min-width: 768px) {
   .fixed-height-row {
     height: 350px !important;
