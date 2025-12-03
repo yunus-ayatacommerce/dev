@@ -614,7 +614,7 @@ h6 {
 .stat-box {
     background-color: #FFD95C;
     color: #000;
-    padding: 8px 5px;
+    padding: 30px 10px;
     border-radius: 5px;
     text-align: center;
     line-height: 1.2;
@@ -640,6 +640,22 @@ h6 {
     object-fit: cover;
     width: 100%;
     height: 100%;
+}
+
+.custom-image-style {
+    /* Base setting: 100% width on all screens (fills its parent column) */
+    width: 100%;
+    height: auto;
+}
+
+/* Media Query: Targets screens from medium (md) breakpoint and up (Desktop/Tablet) */
+@media (min-width: 768px) {
+    .custom-image-style {
+        /* This rule only applies on desktop/tablet */
+        max-width: 300px; /* Constrain the image size to 300px on desktop/tablet */
+        display: block; /* Required if setting max-width on an image */
+        margin: 0 auto; /* Center the constrained image */
+    }
 }
 
 
@@ -767,58 +783,47 @@ h6 {
 
 }
 
-/* Custom Nav Link Styling (for both active and inactive) */
+
 .commerce-nav-pane .custom-nav-link {
-    color: #333;
-    /* Default text color for all links */
-    background-color: transparent;
-    /* Ensures background is from parent pane */
-    border-bottom: 1px solid #ffe8cc;
-    /* Thin separator line */
-    transition: background-color 0.2s ease-in-out;
-    /* Smooth transition for hover */
-    display: flex;
-    /* Use flexbox for alignment of text and icon */
-    align-items: center;
-    /* Vertically center content */
+    color: #333; 
+    background-color: transparent;   
+    border-bottom: 1px solid #ffe8cc;   
+    transition: background-color 0.2s ease-in-out; 
+    display: flex;   
+    align-items: center;  
     justify-content: space-between;
-    /* Pushes icon to the right */
     padding-right: 1.5rem;
-    /* Space for the icon */
+    
 }
 
 .commerce-nav-pane .custom-nav-link:last-of-type {
     border-bottom: none;
-    /* No border for the last link */
+  
 }
 
-/* Active Nav Link Styling */
+
 .commerce-nav-pane .custom-nav-link.active {
-    background-color: #FFD95C !important;
-    /* Slightly darker yellow for the active link */
+    background-color: #FFD95C !important; 
     font-weight: 600;
-    /* Bolder text for active state */
     color: #212529;
-    /* Darker text for active state */
+    
 
 
 }
 
-/* Hover effect for inactive nav links */
+
 .commerce-nav-pane .custom-nav-link:not(.active):hover {
     background-color: #000;
-    /* Light yellow on hover */
     color: #FFD95C;
-    /* Darker text on hover */
+   
 }
 
-/* Right Content Pane Styling */
+
 .commerce-content-pane {
     border: 5px solid #FFD95C;
     background-color: #ffffff;
-    /* White background for the content area */
     padding: 1rem;
-    /* Generous padding inside the content pane */
+    
 }
 
 /* Specific styling for the image placeholder if Bootstrap's img-fluid isn't enough */
@@ -826,23 +831,17 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f8f9fa;
-    /* Light gray background for placeholders */
+    background-color: #f8f9fa; 
     border: 1px dashed #ced4da;
-    /* Dashed border for visual cue */
     color: #6c757d;
-    /* Muted text color */
     height: 100%;
-    /* Occupy available height */
     width: 100%;
-    /* Occupy available width */
     font-size: 0.9rem;
     text-align: center;
 }
 
 .image-placeholder img {
     object-fit: contain;
-    /* Ensures the image fits within the placeholder */
     max-width: 100%;
     max-height: 100%;
 }
@@ -850,11 +849,9 @@ h6 {
 /* For the image in the marketplace section specifically, to match its dimensions */
 .image-placeholder.ratio-16x9 {
     min-height: 350px;
-    /* Adjust as needed for the specific image height */
     background-color: transparent;
-    /* No background for the actual image, only for the placeholder */
     border: none;
-    /* No dashed border for the actual image */
+    
 }
 
 
@@ -867,193 +864,262 @@ hr {
 //Task-251- Module 2 CSS ends here
 
 //task-253 css starts here
-        .wrapper-bg {
-            background-color: #fff0d6;
-            padding: 50px 0px;
-        }
+ /* --- BASE STYLES --- */
+.wrapper-bg {
+    background-color: #fff0d6;
+    padding: 50px 0px;
+}
 
-        .comparison-heading {
-            width: 100%;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
+.custom-badge-top {
+    background: #ffe5b4;
+    color: #cc7a00;
+}
 
-        .comparison-heading h6,
-        .comparison-heading-child {
-            flex-basis: 50%;
-            padding: 15px 20px;
-            margin-bottom: 0 !important;
-            text-align: center;
-        }
+/* --- COMPARISON HEADING (Desktop Header) --- */
+.comparison-heading {
+    width: 100%;
+    height: 60px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
-        .comparison-heading h6 {
-            background-color: #fcf8f6;
-            color: #e34c4d !important;
-            border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-            border-right: none;
-        }
+.comparison-heading h6,
+.comparison-heading-child {
+    flex-basis: 50%;
+    padding: 15px 20px;
+    text-align: center;
+}
 
-        .comparison-heading-child {
-            background-color: #f7fcf8;
-            color: #4b8b42;
-            float: none;
-            border-top-right-radius: 4px;
-            border-bottom-right-radius: 4px;
-            border-left: none;
-        }
+.comparison-heading h6 {
+    background-color: #fcf8f6;
+    color: #e34c4d !important;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
 
-        /* Base feature item is the single comparison row */
-        .feature-item {
-            /* ... (other properties like border, overflow, etc.) ... */
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding: 0;
-            border: 1px solid #e1e1e1;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            background-color: #fff;
-            display: flex;
-            max-height: 100px !important;
+.comparison-heading-child {
+    background-color: #f7fcf8;
+    color: #4b8b42;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
 
-        }
+/* --- FEATURE ITEM (The Card) --- */
+.feature-item {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 0.8rem; 
+    position: relative;
+    padding: 0;
+    border: 1px solid #e1e1e1;
+    border-radius: 0.8rem; 
+    background-color: #fff;
+    display: flex;
+    overflow: visible; 
+}
 
-        /* Hover and Active State (Applies border to the whole item) */
-        .feature-item:hover,
-        .feature-item.active {
 
-            border: 4px solid #ff8a00;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-            width: 100% !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
+.feature-item:hover,
+.feature-item.active {
+    border: 2px solid #ff8a00; 
+    box-shadow: 0 4px 15px rgba(255, 138, 0, 0.15);
+}
 
-        /* --- COMPARISON HALVES STYLES --- */
+/* Inner Layout */
+.comparison-side-left,
+.comparison-side-right {
+    padding: 1.5rem 1rem;
+    position: relative;
+    display: flex; 
+    align-items: center;
+}
 
-        
-        .comparison-side-left {
-            flex-grow: 1;
-        
-            width: 50%;
-            padding: 1.5rem 1rem;
-            background-color: #fff0f0;
-            
-            border-right: 2px solid #ddd;
-          
-            position: relative;
-            z-index: 10;
-        }
+.comparison-side-left {
+    background-color: #fff5f5; 
+}
 
-      
-        .comparison-side-right {
-            flex-grow: 1;
-          
-            width: 50%;
-            padding: 1.5rem 1rem;
-            background-color: #f2fff0;
-           
-            position: relative;
-        }
+.comparison-side-right {
+    background-color: #f2fff0; 
+}
+
+/* Icons */
+.left-icon, .right-icon {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+
+.left-icon { color: #dc3545; }
+.right-icon { color: #198754; }
+
+/* Text Area */
+.content-text {
+    text-align: left;
+}
+
+/* Desktop Arrow (Right Side) */
+.feature-item .arrow-icon {
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    background-color: #ff8a00;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 1000;
+}
+
+.feature-item.active .arrow-icon {
+    opacity: 1;
+}
+
+/* --- MOBILE ELEMENTS (Hidden by default) --- */
+.mobile-connector {
+    display: none;
+}
+.mobile-feature-image {
+    display: none;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+.mobile-feature-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- DESKTOP IMAGE CONTAINER --- */
+.image-container {
+    height: 600px;
+    background-color: #fcfcfc;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.showcase-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    padding: 20px;
+}
+
+.showcase-image.active {
+    opacity: 1;
+}
+
+/* RESPONSIVE STYLES (Mobile & Tablet) */
+
+@media (min-width: 992px) {
+    
+    .comparison-side-left {
+        width: 50%;
+        border-right: 1px solid #eee;
+        border-top-left-radius: 0.8rem;
+        border-bottom-left-radius: 0.8rem;
+    }
+    .comparison-side-right {
+        width: 50%;
+        border-top-right-radius: 0.8rem;
+        border-bottom-right-radius: 0.8rem;
+    }
+   
+    .mobile-feature-image { display: none !important; }
+}
+
+@media (max-width: 991.98px) {
+   
+    .feature-item {
+        flex-direction: column;
+        border: 2px solid #fff; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+    }
+    
+    .feature-item.active {
+        border: 2px solid #ff8a00;
+    }
 
     
-        .left-icon {
-            position: absolute;
-            top: 50%;
-            left: 1rem;
-            transform: translateY(-50%);
-            font-size: 1.5rem;
-            color: #dc3545;
-            
-        }
+    .arrow-icon { display: none !important; }
+    .image-container { display: none !important; }
 
-        .right-icon {
-            position: absolute;
-            top: 50%;
-            left: 1rem;
-            transform: translateY(-50%);
-            font-size: 1.5rem;
-            color: #198754;
-           
-        }
+   
+    .comparison-side-left {
+        width: 100%;
+        border-radius: 0.8rem 0.8rem 0 0; 
+        padding: 20px;
+        background-color: #fff5f5;
+        border-bottom: 1px dashed #eecaca;
+    }
 
+   
+    .comparison-side-right {
+        width: 100%;
+        border-radius: 0 0 0.8rem 0.8rem;
+        padding: 20px;
+        background-color: #f2fff0;
+    }
 
-        .content-text {
-            padding-left: 3rem;
-        }
+   
+    .mobile-connector {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 0;
+        position: relative;
+        z-index: 10;
+    }
 
+    .mobile-connector i {
+        background-color: #92c388; 
+        color: #fff;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        border: 2px solid #fff;
+        margin-top: -12px; 
+    }
 
-        .feature-item .arrow-icon {
-            position: absolute;
-            right: -3px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #ff8a00;
-            opacity: 0;
-            transition: opacity 0.2s ease-in-out;
-            pointer-events: none;
-            z-index: 20;
-            background-color: #ff8a00;
-            color: #fff;
-        }
+    
+    .feature-item.active .comparison-side-right {
+        border-radius: 0; 
+    }
 
-        .feature-item.active .arrow-icon {
-            opacity: 1;
-        }
+    .feature-item.active .mobile-feature-image {
+        display: block;
+        border-radius: 0 0 0.8rem 0.8rem;
+        border-top: 1px solid #e1e1e1;
+        animation: slideDown 0.3s ease-out;
+    }
 
-        /* Styles for the Image Display Container */
-        .image-container {
-            height: 600px;
-            background-color: #fcfcfc;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .showcase-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .showcase-image.active {
-            opacity: 1;
-        }
-
-        @media (max-width: 567.98px) {
-
-            .image-container {
-                display: none !important;
-            }
-
-            .comparison-heading .comparison-heading-child {
-                max-height: 20vh !important;
-
-            }
-
-            .feature-item.active {
-                display: flex;
-                flex-direction: column;
-
-                align-items: flex-start !important;
-                padding: 15px;
-            }
-
-
-        }
-
-
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+}   
 
 //task-253 css ends here
 //........................................................................................................................................
